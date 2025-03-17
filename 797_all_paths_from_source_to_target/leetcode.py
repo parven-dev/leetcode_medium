@@ -26,13 +26,13 @@ class Solution:
             print(vertex, path)
             
             for neighbor in self.graph[vertex]:
-                if neighbor not in path:
+                # if neighbor not in path:
                     
-                    get_path = path + [neighbor]
-                    if neighbor == len(self.graph) -1:
-                        result.append(get_path)
-                    else:
-                        stack.append((neighbor, get_path))
+                get_path = path + [neighbor]
+                if neighbor == len(self.graph) -1:
+                    result.append(get_path)
+                else:
+                    stack.append((neighbor, get_path))
                         
         return result
     
