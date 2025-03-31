@@ -1,21 +1,20 @@
 class Solution:
     def equalPairs(self, grid: list[list[int]]) -> int:
         
-        columns = list(zip(*grid))
+        columns = [tuple(col) for  col  in zip(*grid)]
 
-        columns_dictionary = {i: list(column) for  i , column in enumerate(columns)}
-        row_dictionary = {}
+        col_dictionary = {}
         
         counter = 0
-        for i in range(len(grid)):
-            row_dictionary[i] = grid[i]
+        for col in columns:
+            col_dictionary[col] = col_dictionary.get(col, 0) + 1
         
-        for value in row_dictionary.values():
-            if value in columns_dictionary.values():
-                counter+=1
-        
-        
-     
+      
+        for row in grid:
+            row_tuple = tuple(row)
+            if row_tuple in col_dictionary:
+                counter+=col_dictionary[row_tuple]
+            
         return counter
     
     
